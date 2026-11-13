@@ -1,0 +1,72 @@
+#!name = PCDN 上传加速屏蔽
+#!desc = 屏蔽腾讯视频/爱奇艺/优酷/哔哩哔哩/西瓜/抖音/斗鱼/酷狗/网易云/QQ音乐等平台的 PCDN 上传加速域名，保留正常播放所需域名。规则整理自 B 站专栏「路由器自定义hosts屏蔽PCDN 域名清单」。若某平台播放在开启后异常，删除对应分组即可。
+#!author = msdogo
+#!homepage = https://github.com/msdogo/loon-pcdn-block
+#!tag = 广告拦截, 去PCDN
+#!system = ios, ipados, macos
+
+[Rule]
+
+# ============ 腾讯视频（仅上传加速，保留播放必需域名） ============
+DOMAIN-SUFFIX,hcdn.video.qq.com,REJECT
+DOMAIN-SUFFIX,pcdn.video.qq.com,REJECT
+DOMAIN-SUFFIX,vodlive.qq.com,REJECT
+DOMAIN-SUFFIX,iwan-s.video.qq.com,REJECT
+# 广点通广告 / 腾讯视频统计
+DOMAIN-SUFFIX,gdt.qq.com,REJECT
+DOMAIN-SUFFIX,cm.l.qq.com,REJECT
+
+# ============ 爱奇艺 ============
+DOMAIN-SUFFIX,hcdn.qiyi.com,REJECT
+DOMAIN-SUFFIX,pdata.video.qiyi.com,REJECT
+DOMAIN-SUFFIX,cachecdn.v.iqiyi.com,REJECT
+DOMAIN-SUFFIX,meta-cdn.video.iq.com,REJECT
+DOMAIN-SUFFIX,tpa-hcdn.iqiyi.com,REJECT
+DOMAIN-SUFFIX,data6.video.iqiyi.com,REJECT
+
+# ============ 优酷 / 土豆 ============
+DOMAIN-SUFFIX,atm.youku.com,REJECT
+DOMAIN-SUFFIX,fvid.atm.youku.com,REJECT
+DOMAIN-SUFFIX,html.atm.youku.com,REJECT
+DOMAIN-SUFFIX,valb.atm.youku.com,REJECT
+DOMAIN-SUFFIX,valf.atm.youku.com,REJECT
+DOMAIN-SUFFIX,static.atm.youku.com,REJECT
+DOMAIN-SUFFIX,valc.atm.youku.com,REJECT
+
+# ============ 哔哩哔哩（mcdn 即 PCDN 上传节点） ============
+DOMAIN-SUFFIX,mcdn.bilivideo.com,REJECT
+DOMAIN-SUFFIX,mcdn.bilivideo.cn,REJECT
+DOMAIN-SUFFIX,szbdyd.com,REJECT
+DOMAIN-SUFFIX,pcdn.biliapi.net,REJECT
+
+# ============ 西瓜 / 抖音 / 斗鱼 ============
+DOMAIN-SUFFIX,pull-rtmp-l11.ixigua.com,REJECT
+DOMAIN-SUFFIX,push-rtmp-l1.ixigua.com,REJECT
+DOMAIN-SUFFIX,pull-hs-f5-hot.flive.douyincdn.com,REJECT
+DOMAIN-SUFFIX,p2p.douyucdn.cn,REJECT
+
+# ============ 酷狗音乐 ============
+DOMAIN-SUFFIX,trackercdn.kugou.com,REJECT
+DOMAIN-SUFFIX,mobiletrackercdn.kugou.com,REJECT
+# 酷狗 P2P 上传（如遇「歌单/推荐」加载异常可删除此行）
+DOMAIN-SUFFIX,d.kugou.com,REJECT
+
+# ============ 网易云音乐 ============
+DOMAIN-SUFFIX,jiasu.163.com,REJECT
+DOMAIN-SUFFIX,163jiasu.com,REJECT
+# 上传加速（如遇评论/上传异常可删除此行）
+DOMAIN-SUFFIX,sf.163.com,REJECT
+
+# ============ QQ 音乐 ============
+DOMAIN-SUFFIX,isure6.stream.qqmusic.qq.com,REJECT
+
+# ============ 通用 PCDN / CDN 统计域名 ============
+DOMAIN-SUFFIX,p-cdn.com,REJECT
+DOMAIN-SUFFIX,pscdn.co,REJECT
+DOMAIN-SUFFIX,p.scdn.co,REJECT
+
+# ============ 可选：PCDN 特征关键字（默认关闭，避免误杀） ============
+# 如果发现还有平台的 PCDN 域名变体没被挡住，可去掉下面两行的 # 开启。
+# 注意：关键字规则范围较大，开启后若视频/音乐异常，请重新注释掉。
+# DOMAIN-KEYWORD,pcdn,REJECT
+# DOMAIN-KEYWORD,mcdn,REJECT
